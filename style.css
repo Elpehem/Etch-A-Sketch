@@ -39,11 +39,16 @@
 }
 
 .squaresContainer{
-    width: 83.3%;
+    width: 83.333%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    padding: 0px;
+    margin: 0px;
+    justify-content: center;
+    align-content: center;
+    
 }
 
 .buttons {

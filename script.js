@@ -1,22 +1,30 @@
 // Variables
-var resolution = 16;
-const squareFill = 0.8;
-
+var resolution = 25;
+const squareFill = 0.9
+var mouseIsDown;
 
 createSquares()
 
+addEventListener("mousedown", () => { mouseIsDown = 1})
+addEventListener("mouseup", () => { mouseIsDown = 0})
+
 // buttons is a node list. It looks and acts much like an array.
-const buttons = document.querySelectorAll("button");
+const squares = document.querySelectorAll(".square");
 
 // we use the .forEach method to iterate through each button
-buttons.forEach((button) => {
+squares.forEach((square) => {
   // and for each one we add a 'click' listener
-  button.addEventListener("click", () => {
-  
+  square.addEventListener("mouseover", () => {
+    
+    if(mouseIsDown == 1 ){
+        square.style.backgroundColor = "#4AF626"
+    }
+    
    
     
   });
 });
+
 
 
 
@@ -34,11 +42,15 @@ function createSquares(){
     screenSize = Number(screenSize.substring(0,screenSize.length-2))
 
     // Sets square size based one resolution and container width
+    const border =  1 * 0.8;
     eachSquare_grossWidth = screenSize/resolution
     eachSquare_netWidth = squareFill * eachSquare_grossWidth
-    const border =  1;
-    eachSquare_padding = 0.5 * (eachSquare_grossWidth - eachSquare_netWidth) - border
+    eachSquare_margin = 0.5 * (eachSquare_grossWidth - eachSquare_netWidth)
     
+    console.log("gross " + eachSquare_grossWidth )
+    console.log("net " + eachSquare_netWidth )
+    console.log("margin " + eachSquare_margin )
+    console.log("screen " + screenSize )
     for(i = 0 ; i < resolution*resolution ; i++){
         
         const square = document.createElement("div");
@@ -48,12 +60,15 @@ function createSquares(){
         // square formatting
         square.style.width = eachSquare_netWidth +"px"
         square.style.height = eachSquare_netWidth +"px"
-        square.style.margin = eachSquare_padding +"px"
-        console.log(screenSize/resolution )
-        // console.log(screenSize/resolution)
-        square.style.borderColor = "#AAAAAA"
-        square.style.border = "solid"
-        square.style.borderWidth = border + "px"
+        square.style.margin = eachSquare_margin + "px"
+        square.className = "square"
+        // square.style.borderColor = "#4AF626"
+        // square.style.borderStyle = "solid"
+        // square.style.borderWidth = border + "px"
+        // square.style.backgroundColor = "#4AF626"
+        square.style.boxShadow = "0px 0px 1px #17b204"
+        
+        
 
         
         
