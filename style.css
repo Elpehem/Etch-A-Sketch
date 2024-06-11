@@ -1,50 +1,49 @@
 
+:root{
+
+    --scale: 2;
+    
+
+}
+
 .vt323-regular {
     font-family: "VT323", monospace;
     font-weight: 400;
     font-style: normal;
   }
   
-.body{
-    position: relative;
-}
 
 .mainBox {
     background-color: #cdd4b9;
     border-radius: 10px;
     font-family: "VT323";
     padding: 20px;
-    width: 300px;
+    width: calc(var(--scale)*300px);
+    height: calc(var(--scale)*300px);
     box-shadow: inset 0px 0px 10px #757969;
     
 
 }
 
-.scoreBoard {
+.screen {
     background-color: #2d3031;
     border-radius: 10px;
     color: #4AF626;
-    height: 200px;
-    padding: 10px;
-    box-shadow: inset 0px 0px 10px #96c49e
-    
-}
-
-.score_div {
+    height: 80%;
+    padding: 20px;
+    box-shadow: inset 0px 0px 10px #96c49e;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-}
-
-.score_div div{
-    text-align: center;
-}
-
-
-.score {
+    justify-content: center;
     
-    font-size: 36px;
+    
+}
+
+.squaresContainer{
+    width: 83.3%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .buttons {
@@ -53,6 +52,7 @@
     justify-content: space-around;
     color: black;
     margin: 10px;
+    height : 20%;
 }
 
 
@@ -65,24 +65,7 @@
     
 }
 
-.commentText{
-    animation-name: spread;
-    animation-duration: 3000ms;
-    animation-iteration-count: 1;
-    text-align: left;
-    overflow: hidden;
-    font-size: 20px;
 
-    
-}
-.commentDash {
-    animation-name: blink;
-    animation-duration: 1000ms;
-    animation-iteration-count: infinite;
-    margin-left: 1px;
-    font-size: 20px;
-
-}
 
 @keyframes blink {
     from { opacity: 1; }
