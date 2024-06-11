@@ -1,0 +1,97 @@
+
+.vt323-regular {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.body{
+    position: relative;
+}
+
+.mainBox {
+    background-color: #cdd4b9;
+    border-radius: 10px;
+    font-family: "VT323";
+    padding: 20px;
+    width: 300px;
+    box-shadow: inset 0px 0px 10px #757969;
+    
+
+}
+
+.scoreBoard {
+    background-color: #2d3031;
+    border-radius: 10px;
+    color: #4AF626;
+    height: 200px;
+    padding: 10px;
+    box-shadow: inset 0px 0px 10px #96c49e
+    
+}
+
+.score_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.score_div div{
+    text-align: center;
+}
+
+
+.score {
+    
+    font-size: 36px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: black;
+    margin: 10px;
+}
+
+
+.commentBoard {
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.commentText{
+    animation-name: spread;
+    animation-duration: 3000ms;
+    animation-iteration-count: 1;
+    text-align: left;
+    overflow: hidden;
+    font-size: 20px;
+
+    
+}
+.commentDash {
+    animation-name: blink;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    margin-left: 1px;
+    font-size: 20px;
+
+}
+
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes spread {
+    from { width: 0px; }
+    to { width: auto; }
+}
+
+
