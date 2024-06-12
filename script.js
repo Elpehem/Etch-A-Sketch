@@ -1,16 +1,30 @@
 // Variables
-var resolution = 50;
+var resolution = 16;
 const squareFill = 1
 var mouseIsDown;
 
-createSquares()
-document.querySelector(".resolutionSelect").textContent = "RES " +resolution ; 
+setup();
 
 
 
-addEventListener("mousedown", () => { mouseIsDown = 1 })
-addEventListener("mouseup", () => { mouseIsDown = 0 })
+function setup() {
+    createSquares();
+    document.querySelector(".resolutionSelect").textContent = "RES " + resolution ; 
+    createEventListeners();
+}
 
+function createEventListeners() {
+    addEventListener("mousedown", () => { mouseIsDown = 1 });
+    addEventListener("mouseup", () => { mouseIsDown = 0 });
+    createEventListenerSquares();
+    createEventListenerClear();
+    createEventListenerResolutionSelect();
+    createEventListenerSetResolution();
+}
+
+
+
+function createEventListenerSquares(){
 // buttons is a node list. It looks and acts much like an array.
 const squares = document.querySelectorAll(".square");
 
@@ -30,66 +44,58 @@ squares.forEach((square) => {
     
   });
 });
-
-//Add eventlistener for clear button
-const clear = document.querySelector(".clear");
-clear.addEventListener("click", () => {
-    const squares = document.querySelectorAll(".square");
-    buttonClickAnimation(clear)
-
-    squares.forEach((square) => {
-        square.style.backgroundColor = "#2d3031"
-        
-      });
-    
-})
-
-//Add event listener for resolution select screen
-const resolutionSelect = document.querySelector(".resolutionSelect");
-resolutionSelect.addEventListener("mousewheel" , getDeltaY)
-
-function getDeltaY(e) {
-    if(e.deltaY > 0 && resolution > 1 ){
-        resolution--
-        console.log(resolution)
-    }
-
-    else if (e.deltaY < 0 && resolution < 100){
-        resolution++
-        
-    }
-    document.querySelector(".resolutionSelect").textContent = "RES " + resolution
 }
 
-//Add event listener for resolution set button
-const setResolution = document.querySelector(".setResolution");
 
-setResolution.addEventListener("click", repopGrid)
+function createEventListenerClear() {
+    const clear = document.querySelector(".clear");
+    clear.addEventListener("click", () => {
+        const squares = document.querySelectorAll(".square");
+        buttonClickAnimation(clear)
+    
+        squares.forEach((square) => {
+            square.style.backgroundColor = ""
+            
+          });
+        
+    })
+}
+
+
+function createEventListenerResolutionSelect(){
+    const resolutionSelect = document.querySelector(".resolutionSelect");
+    resolutionSelect.addEventListener("mousewheel" , getDeltaY)
+    
+    function getDeltaY(e) {
+        if(e.deltaY > 0 && resolution > 1 ){
+            resolution--
+            console.log(resolution)
+        }
+    
+        else if (e.deltaY < 0 && resolution < 100){
+            resolution++
+            
+        }
+        document.querySelector(".resolutionSelect").textContent = "RES " + resolution
+    }
+}
+
+
+function createEventListenerSetResolution(){
+    //Add event listener for resolution set button
+    const setResolution = document.querySelector(".setResolution");
+
+    setResolution.addEventListener("click", repopGrid)
+}
+
 
 function repopGrid() {
+    const setResolution = document.querySelector(".setResolution");
+    buttonClickAnimation(setResolution)
     const container = document.querySelector(".squaresContainer");
     container.innerHTML = ""; //Clears squares
     createSquares();
-
-    // buttons is a node list. It looks and acts much like an array.
-    const squares = document.querySelectorAll(".square");
-
-    // we use the .forEach method to iterate through each button
-    squares.forEach((square) => {
-    // and for each one we add a 'click' listener
-    square.addEventListener("mouseover", () => {
-        
-
-        if(mouseIsDown == 1 ){
-            square.style.backgroundColor = "#4AF626"
-        }
-
-    });
-    square.addEventListener("mousedown", () => {
-        square.style.backgroundColor = "#4AF626"
-        
-    });
-    });
+    createEventListenerSquares();
 }
 
 
