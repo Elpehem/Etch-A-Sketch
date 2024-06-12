@@ -21,7 +21,7 @@
     width: calc(var(--scale)*300px);
     height: calc(var(--scale)*300px);
     box-shadow: inset 0px 0px 10px #757969;
-    
+    user-select: none;
 
 }
 

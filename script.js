@@ -1,5 +1,5 @@
 // Variables
-var resolution = 10;
+var resolution = 50;
 const squareFill = 1
 var mouseIsDown;
 
@@ -89,6 +89,7 @@ function createSquares(){
         // square.style.borderWidth = border + "px"
         // square.style.backgroundColor = "#4AF626"
         square.style.boxShadow = "0px 0px 1px #17b204"
+        square.draggable = false
         
         
 
