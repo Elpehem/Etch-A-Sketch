@@ -80,6 +80,34 @@
     cursor: pointer;
 }
 
+.resolutionSelect {
+    background-color: #2d3031;
+    border-radius: 5px;
+    color: #4AF626;
+    min-width: 100px;
+    height: auto;
+    box-shadow: inset 0px 0px 10px #96c49e;
+    margin-left: 20px;
+    align-content: center;
+    text-align: center; 
+}
+
+.setResolution {
+    width: auto;
+    height : auto;
+    padding: 10px;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: 0px 0px 5px #000000;
+    background-color: #797660;
+    font-size: 24px;
+    /* font-weight: bold; */
+    font-family: "VT323";
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
 
 
 @keyframes blink {
