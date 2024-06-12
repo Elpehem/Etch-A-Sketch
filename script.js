@@ -1,12 +1,14 @@
 // Variables
-var resolution = 25;
-const squareFill = 0.9
+var resolution = 10;
+const squareFill = 1
 var mouseIsDown;
 
 createSquares()
 
-addEventListener("mousedown", () => { mouseIsDown = 1})
-addEventListener("mouseup", () => { mouseIsDown = 0})
+
+
+addEventListener("mousedown", () => { mouseIsDown = 1 })
+addEventListener("mouseup", () => { mouseIsDown = 0 })
 
 // buttons is a node list. It looks and acts much like an array.
 const squares = document.querySelectorAll(".square");
@@ -16,14 +18,37 @@ squares.forEach((square) => {
   // and for each one we add a 'click' listener
   square.addEventListener("mouseover", () => {
     
+
     if(mouseIsDown == 1 ){
         square.style.backgroundColor = "#4AF626"
     }
-    
-   
+
+  });
+  square.addEventListener("mousedown", () => {
+    square.style.backgroundColor = "#4AF626"
     
   });
 });
+
+//Add eventlistener for clear button
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", () => {
+    
+    buttonClickAnimation(clear)
+
+    squares.forEach((square) => {
+        square.style.backgroundColor = "#2d3031"
+        
+      });
+    
+})
+
+
+async function buttonClickAnimation(button){
+    button.style.boxShadow = "inset 0px 0px 5px #000000"
+    await sleep(300)
+    button.style.boxShadow = "0px 0px 5px #000000"
+}
 
 
 
@@ -47,10 +72,7 @@ function createSquares(){
     eachSquare_netWidth = squareFill * eachSquare_grossWidth
     eachSquare_margin = 0.5 * (eachSquare_grossWidth - eachSquare_netWidth)
     
-    console.log("gross " + eachSquare_grossWidth )
-    console.log("net " + eachSquare_netWidth )
-    console.log("margin " + eachSquare_margin )
-    console.log("screen " + screenSize )
+    
     for(i = 0 ; i < resolution*resolution ; i++){
         
         const square = document.createElement("div");
